@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Shop everyday style, beauty, home essentials and more at Achor." />
+    <title>Achor — Everyday finds, thoughtfully chosen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
+    <div class="site-shell">
+      <header class="site-header" id="site-header">
+        <div class="header-main page-width">
+          <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Browse categories" aria-controls="category-sidebar" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </button>
+          <a class="brand logo-glow" href="#" aria-label="Achor home">Achor</a>
+          <form class="search-box" id="search-form" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m16 16 4 4" /></svg>
+            <input id="search-input" type="search" placeholder="Search products, brands and more..." aria-label="Search products" />
+            <button type="submit">Search</button>
+          </form>
+          <div class="header-actions">
+            <button class="icon-button mobile-search-toggle" id="mobile-search-toggle" type="button" aria-label="Open search" aria-controls="mobile-search-row" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m16 16 4 4" /></svg>
+            </button>
+            <button class="account-button" id="account-button" type="button" aria-haspopup="dialog" aria-controls="auth-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20a7 7 0 0 1 14 0" /></svg>
+              <span id="account-label">Account</span>
+            </button>
+            <button class="cart-button" id="open-cart" type="button" aria-label="Open shopping cart" aria-controls="cart-sidebar" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 8H6" /><circle cx="10" cy="20" r="1" /><circle cx="18" cy="20" r="1" /></svg>
+              <span>Cart</span><b class="cart-badge" id="cart-count" aria-live="polite">0</b>
+            </button>
+          </div>
+        </div>
+        <div class="mobile-search-row" id="mobile-search-row">
+          <form class="search-box w-full" id="mobile-search-form" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m16 16 4 4" /></svg>
+            <input id="mobile-search-input" type="search" placeholder="Search Achor..." aria-label="Search products" />
+          </form>
+        </div>
+      </header>
+
+      <div class="category-scrim" id="category-scrim"></div>
+      <div class="layout page-width">
+        <aside class="category-sidebar" id="category-sidebar" aria-label="Product categories">
+          <div class="sidebar-heading"><span>Departments</span><button class="icon-button close-categories" id="close-categories" type="button" aria-label="Close categories">×</button></div>
+          <nav class="sidebar-categories" id="sidebar-categories"></nav>
+          <div class="sidebar-promo"><span class="promo-icon">✦</span><strong>Find your next favourite</strong><p>Great picks for every part of your day.</p></div>
+        </aside>
+
+        <main class="main-content">
+          <section class="hero-banner" aria-label="Welcome to Achor">
+            <div class="hero-copy">
+              <span class="section-kicker">NEW SEASON COLLECTION</span>
+              <h1>Discover <span>Style</span> That Fits Your Life</h1>
+              <p>Shop curated fashion, accessories, and home essentials with quality you can trust at prices you'll love.</p>
+              <a href="#shop" class="hero-cta">Shop now <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-pagination"><span class="active"></span><span></span><span></span></div>
+          </section>
+
+          <div class="mobile-department-label"><span>Shop by category</span><button id="open-categories" type="button">View all <span aria-hidden="true">→</span></button></div>
+          <nav class="category-pills" id="category-pills" aria-label="Shop categories"></nav>
+
+          <section class="catalog" id="shop">
+            <div class="section-heading">
+              <div><span class="section-kicker">MADE FOR YOUR EVERYDAY</span><h2 id="catalog-title">Popular right now</h2></div>
+              <span class="result-count" id="result-count"></span>
+            </div>
+            <div class="product-grid" id="product-grid" aria-live="polite"></div>
+            <nav class="product-pagination" id="product-pagination" aria-label="Product pages" hidden></nav>
+            <div class="view-all-container">
+              <a class="view-all-button" id="view-all-products" href="/shop">View All Products</a>
+            </div>
+            <div class="empty-state" id="empty-state" hidden>
+              <span class="empty-icon">⌕</span><h3>No products found</h3><p>Try a different search or choose another category.</p>
+              <button class="button button-primary" id="clear-filters" type="button">Clear filters</button>
+            </div>
+          </section>
+
+          <section class="promo-banners">
+            <div class="promo-grid">
+              <article class="promo-card promo-card-deals">
+                <div class="promo-content">
+                  <span class="promo-label">CRAZY DEALS</span>
+                  <h3>Buy 1 Get 1 Free</h3>
+                  <p>On select products</p>
+                  <a href="#shop" class="promo-btn">Shop Now <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+              <article class="promo-card promo-card-collection">
+                <div class="promo-content">
+                  <span class="promo-label">SPRING/SUMMER</span>
+                  <h3>New Collection</h3>
+                  <p>Fresh arrivals just in</p>
+                  <a href="#shop" class="promo-btn">Shop Now <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="features-strip">
+            <div class="features-grid">
+              <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <div class="feature-text">
+                  <strong>Free Shipping</strong>
+                  <span>On orders over ₦50,000</span>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🛒</div>
+                <div class="feature-text">
+                  <strong>Online Order</strong>
+                  <span>Shop from anywhere</span>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <div class="feature-text">
+                  <strong>Save Money</strong>
+                  <span>Best prices guaranteed</span>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🎧</div>
+                <div class="feature-text">
+                  <strong>24/7 Support</strong>
+                  <span>We're here to help</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="newsletter-section">
+            <div class="newsletter-container">
+              <div class="newsletter-content">
+                <h3>Sign up for our newsletter</h3>
+                <p>Get updates on new arrivals and exclusive offers</p>
+              </div>
+              <form class="newsletter-form" id="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
+                <button type="submit" class="newsletter-submit">Subscribe</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="product-detail" id="product-detail" hidden></section>
+        </main>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-column footer-brand">
+            <h2 class="text-3xl font-bold logo-glow">Achor</h2>
+            <p>Your Style, Your Market. Quality products at best prices across Nigeria.</p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook" class="social-facebook"><img src="/facebook%20(2).png" alt="Facebook" class="social-icon" /></a>
+              <a href="#" aria-label="Instagram" class="social-instagram"><img src="/instagram%20(2).png" alt="Instagram" class="social-icon" /></a>
+              <a href="#" aria-label="Twitter" class="social-twitter"><img src="/twitter.png" alt="Twitter" class="social-icon" /></a>
+              <a href="#" aria-label="WhatsApp" class="social-whatsapp"><img src="/whatsapp.png" alt="WhatsApp" class="social-icon" /></a>
+            </div>
+            <div class="app-badges">
+              <a href="#" aria-label="Download on the App Store"><img class="app-badge app-badge-store" src="/assets/App_Store.png" alt="Download on the App Store" /></a>
+              <a href="#" aria-label="Get it on Google Play"><img class="app-badge app-badge-play" src="/assets/Google_Play.png" alt="Get it on Google Play" /></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="#" class="footer-link">Help Center</a></li>
+              <li><a href="#" class="footer-link">How to Shop</a></li>
+              <li><a href="#" class="footer-link">Track Order</a></li>
+              <li><a href="#" class="footer-link">Returns &amp; Refunds</a></li>
+              <li><a href="#" class="footer-link">Shipping Info</a></li>
+              <li><a href="#" class="footer-link">FAQs</a></li>
+              <li><a href="#" class="footer-link">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>About Achor</h3>
+            <ul>
+              <li><a href="#" class="footer-link">About Us</a></li>
+              <li><a href="#" class="footer-link">Careers</a></li>
+              <li><a href="#" class="footer-link">Terms &amp; Conditions</a></li>
+              <li><a href="#" class="footer-link">Privacy Policy</a></li>
+              <li><a href="#" class="footer-link">Flash Sales</a></li>
+              <li><a href="#" class="footer-link">Official Stores</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Stay Connected</h3>
+            <p class="text-sm text-gray-400 mb-4">Subscribe to our newsletter for the latest drops and exclusive offers.</p>
+            <div class="flex">
+              <input class="newsletter-input" type="email" placeholder="Your email" />
+              <button class="newsletter-button" type="button">Subscribe</button>
+            </div>
+            <div class="newsletter-contact">
+              <div class="contact-item">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.21 21.75 2.25 14.79 2.25 4.25a1 1 0 011-1H6.75a1 1 0 011 1v3.5a1 1 0 01-.75.95z"/></svg>
+                <span>+234 900 000 000</span>
+              </div>
+              <div class="contact-item">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12.713l-2.85-2.85L4 15v6h4l4-4 4 4h4v-6l-5.15-5.287zM12 15L7 19.5V14l5-5 5 5-5 5.5V15z"/><path d="M12 12.713l-2.85-2.85L4 15v6h4l4-4 4 4h4v-6l-5.15-5.287z"/></svg>
+                <span>support@achor.com.ng</span>
+              </div>
+              <div class="contact-item">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>123 Commerce Street, Lagos, Nigeria</span>
+              </div>
+            </div>
+            <div class="payment-methods">
+              <img class="payment-icon payment-mastercard" src="/assets/mastercard-footer.png" alt="Mastercard" />
+              <img class="payment-icon payment-visa" src="/assets/visacard-footer.png" alt="Visa" />
+              <img class="payment-icon payment-paypal" src="/assets/paypalcard-footer.png" alt="PayPal" />
+              <img class="payment-icon payment-paystack" src="/assets/pastackcard-footer.png" alt="Paystack" />
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="border-t border-gray-800 py-4 text-center text-gray-500 text-sm">© <span id="year">2026</span> Achor. All Rights Reserved. Made with ❤️ in Nigeria</div>
+        </div>
+      </footer>
+    </div>
+
+     <div class="cart-overlay" id="cart-overlay" hidden></div>
+    <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
+      <div class="auth-dialog-header">
+        <div><span class="section-kicker">YOUR ACHOR ACCOUNT</span><h2 id="auth-title">Welcome</h2></div>
+        <button class="icon-button" id="close-auth" type="button" aria-label="Close account dialog">×</button>
+      </div>
+      <div class="auth-user-panel" id="auth-user-panel" hidden>
+        <p class="auth-user-greeting">Signed in as</p>
+        <strong id="auth-user-name"></strong>
+        <span id="auth-user-email"></span>
+        <button class="button button-dark" id="sign-out-button" type="button">Sign out</button>
+      </div>
+      <form class="auth-form" id="auth-form">
+        <label class="auth-name-field" id="auth-name-field" hidden for="auth-name">Full name
+          <input id="auth-name" name="name" type="text" autocomplete="name" maxlength="100" />
+        </label>
+        <label>Email address
+          <input id="auth-email" name="email" type="email" autocomplete="email" required />
+        </label>
+        <label>Password
+          <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="8" required />
+        </label>
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+        <button class="button button-primary auth-submit" id="auth-submit" type="submit">Sign in</button>
+        <button class="auth-mode-toggle" id="auth-mode-toggle" type="button">Create an account</button>
+      </form>
+    </dialog>
+     <aside class="cart-sidebar" id="cart-sidebar" role="dialog" aria-modal="false" aria-label="Shopping cart" aria-hidden="true">
+      <div class="cart-header"><div><span class="section-kicker">YOUR SELECTION</span><h2>Your cart <span id="cart-title-count">(0)</span></h2></div><button class="icon-button" id="close-cart" type="button" aria-label="Close cart">×</button></div>
+      <div class="cart-items" id="cart-items" aria-live="polite"></div>
+      <div class="cart-empty" id="cart-empty"><span class="empty-icon">♡</span><h3>Your cart is waiting</h3><p>Find something lovely to make it yours.</p></div>
+      <div class="cart-footer" id="cart-footer">
+        <div class="subtotal"><span>Subtotal</span><strong id="cart-total">₦0</strong></div>
+        <p>Delivery fees are calculated at checkout.</p>
+        <button class="button button-primary checkout-button" id="checkout-button" type="button">Continue to checkout <span aria-hidden="true">→</span></button>
+      </div>
+    </aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
